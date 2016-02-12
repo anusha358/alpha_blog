@@ -1,0 +1,86 @@
+
+        h1 { font-family: "Times New Roman";
+        font-size: 150%;
+            text-align: left;
+            color: blueviolet;
+            font-weight: 100;  
+            margin-left: 30px;
+        }
+        .searchbar { background-color: #DEDF55;
+                    height: 50px;
+                    width: 300px;
+                    position: absolute;
+                    top:10px;
+                    left:600px;
+                    text-align: left;
+                    text-indent: 10px; 
+        }
+        #submit{ background-color:darkorchid;
+               color:white;      
+        }
+        
+        .menu { background-color: #DEDF55;
+                height: 50px;
+                width:auto;
+                text-decoration: none;
+            background: linear-gradient(top to bottom white 1%,#DEDF55 99%);
+            margin-left: 30px;
+        }
+        a:link{ color:blueviolet;
+            text-align: center;
+            margin-left: 20px;
+            text-decoration: none;
+            display:inline-flex;
+            
+        }
+        a:hover{color:blue;
+        font-size: 120%}
+        
+        .description{ 
+            background-color: #DCF0A6;
+            height:200px;
+            text-align: left;
+            text-overflow:clip;
+            word-wrap: break-word;
+            padding-left: 30px;
+            padding-top: 10px;
+            margin-left: 30px;
+            overflow:auto;
+        }
+        .goto{color:blueviolet;
+            height: 300px;
+            width: 300px;
+        border-color: black;
+        border-style:solid;
+        border-width: 1px;
+        border-radius: 10px;  
+            float:left;
+            margin-left: 30px;
+            margin-right: 100px;
+            margin-bottom: 30px;
+            text-overflow:clip;
+            word-break: break-all;
+            overflow: auto;
+        
+        }
+        
+        ul.bullets{ list-style: square;
+        }
+        ul.bullets:hover{ text-decoration: underline;
+        font-size : 20px}
+        
+        .sidehead{ color:Red;
+            text-indent: 10px;
+            font-weight: bolder;
+            }
+        .footer{background-color: #DEDF55;
+                height: 50px;
+                width:auto;
+            background: linear-gradient(top to bottom white 1%,#DEDF55 99%)rgba( 175, 197, 37, 0 );
+            
+            clear: both;
+        text-decoration: none;
+            text-align: left;
+            text-indent: 30px;
+        }
+        
