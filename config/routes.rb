@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   
   get 'alphablog/home' ,to: 'alphablog#home'
   get 'alphablog/about' ,to: 'alphablog#about'
+  
+  resources :articles
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
