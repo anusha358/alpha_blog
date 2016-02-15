@@ -13,6 +13,7 @@
     <td> <%= article.description %> </td>
     <td> <%= link_to "Edit",edit_article_path(article) %></td>
     <td> <%= link_to "view",article_path(article)%></td>
+    <td> <%= link_to "delete",article_path(article),method: :delete, data: {confirm: "Are you sure?"} %></td>
     
    </tr>
   <% end %>
@@ -20,4 +21,8 @@
   
 </table> 
   
+</p>
+
+<p>
+  <%= link_to "Back", alphablog_home_path %>
 </p>
