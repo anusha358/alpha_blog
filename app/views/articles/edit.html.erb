@@ -1,5 +1,4 @@
-<h1> Create New Article </h1>
-
+<h1> do you want to edit the article </h1>
 <% if @article.errors.any? %>
 <h2> Error occured. Please refer the following </h2>
 <% @article.errors.full_messages.each do |msg| %>
@@ -33,5 +32,6 @@
 <p>
   <td> <%= link_to "home",articles_path %></td> 
 </p>
+
 
 <% end %>
