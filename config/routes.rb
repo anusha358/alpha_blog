@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   
   root 'alphablog#home' 
+  get 'signup' => 'users#new'
+  resources :users, except: [:new]
   
   
   resources :articles
