@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :articles
+  before_save { self.email = email.downcase }
   validates :username, presence:true ,
                        length: {minimum:8,maximum:15},
                        uniqueness: { case_sensitive: false }
