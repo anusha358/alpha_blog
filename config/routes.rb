@@ -8,8 +8,6 @@ Rails.application.routes.draw do
   root 'alphablog#home' 
   get 'signup' => 'users#new'
   resources :users, except: [:new]
-  
-  
   resources :articles
 
   # Example of regular route:

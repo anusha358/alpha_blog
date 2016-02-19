@@ -1,6 +1,10 @@
 <h1 align="center">List of articles </h1>
 
 <%= render 'article', obj: @articles%>
+<div align="center">
+  <%= will_paginate @articles %>
+</div>
+
       
 <p>
   <%= link_to "Home", root_path %>
