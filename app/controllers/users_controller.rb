@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "User logied sucessfully"
+      flash[:success] = "Welcome to the alphablog #{@user.username}"
       redirect_to articles_path
     else
       render 'new'
@@ -21,8 +21,8 @@ class UsersController < ApplicationController
   def update
     
     @user= User.find( params[:id])
-    if @user.update_attributes(:password => params[:password])
-      flash[:success] = "password sucessfully updated"
+    if @user.update(user_params)
+      flash[:success] = "account sucessfully updated"
        redirect_to user_path(@user)
     else
       render 'edit'
