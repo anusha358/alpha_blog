@@ -1,7 +1,8 @@
 class ArticlesController < ApplicationController
   
-  before_action:find_article,only:[:edit,:show,:destroy,:update]
-   
+  before_action:find_article,only:[:edit,:show,:update,:destroy]
+   before_action:require_user,except:[:index,:show]
+    before_action:require_same_user,only:[:edit,:update,:destroy]
   
   def index
     @articles=Article.paginate(:page => params[:page],:per_page => 7)
@@ -17,7 +18,7 @@ class ArticlesController < ApplicationController
     #render plain: params[:article].inspect
    
     @article = Article.new(article_params)
-     
+     @article.user_id=session[:user_id]
     
     if @article.save
       flash[:success] = "article was sucessfully created"
@@ -61,6 +62,13 @@ class ArticlesController < ApplicationController
   
   def article_params
     params.require(:article).permit(:title,:description)
+    
+  end
+  def require_same_user
+    if current_user != @article.user
+      flash[:danger] = "you are restricted to do this operation"
+      redirect_to root_path
+    end
     
   end
 end

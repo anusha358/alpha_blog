@@ -31,15 +31,19 @@
 <hr>
 <%= simple_format(@article.description) %>
   <div class="article-actions">
+    
+    <% if   logged_in? && current_user == @article.user %>
+    
   <%= link_to "Edit Article",edit_article_path(@article),class:"btn btn-xs btn-primary" %>
   <%= link_to "Delete Article", article_path(@article), method: :delete,
                   data:{ confirm:"are you sure,you want to delte the article?"},
                   class:"btn btn-xs btn-danger" %>
+    <% end %>
   </div>
 </div>
 
   <div class="col-xs-8 cols-xs-offset-2">
-       <%= link_to "back to articles listing",articles_path %>
+       <%= link_to "back to articles listing", articles_path %>
     
   </div>
 
