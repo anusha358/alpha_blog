@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update, :show]
+  before_action :set_user, only: [:edit, :update, :show, :destroy]
   before_action :require_same_user, only:[:edit,:update]
+  before_action :require_admin, only:[:destroy]
     def index
     @users=User.paginate(:page => params[:page], :per_page => 7)
     end
@@ -11,8 +12,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Welcome to the alphablog #{@user.username}"
-      redirect_to articles_path
+      session[:user_id] = @user.id
+      flash[:success] = "Welcome to Alpha blog, #{@user.username}"
+      redirect_to user_path(@user)
     else
       render 'new'
     end
@@ -36,7 +38,13 @@ class UsersController < ApplicationController
       
     end
   end
-  
+  def destroy
+    @user.destroy
+      flash[:danger] = "User removed sucessfully"
+      redirect_to users_path
+    
+  end
+
   private
   
   def user_params
@@ -46,7 +54,13 @@ class UsersController < ApplicationController
   @user = User.find(params[:id])
   end
   def require_same_user
-    if current_user != @user[:id]
+    if (current_user != @user && !current_user.admin?)
+      flash[:danger] = "you are restricted to do this operation"
+      redirect_to root_path
+    end
+  end
+  def require_admin
+    if (logged_in? && !current_user.admin?)
       flash[:danger] = "you are restricted to do this operation"
       redirect_to root_path
     end

@@ -18,7 +18,7 @@ class ArticlesController < ApplicationController
     #render plain: params[:article].inspect
    
     @article = Article.new(article_params)
-     @article.user_id=session[:user_id]
+     @article.user_id=current_user
     
     if @article.save
       flash[:success] = "article was sucessfully created"
@@ -65,7 +65,7 @@ class ArticlesController < ApplicationController
     
   end
   def require_same_user
-    if current_user != @article.user
+    if ( current_user != @article.user && !current_user.admin?)
       flash[:danger] = "you are restricted to do this operation"
       redirect_to root_path
     end
