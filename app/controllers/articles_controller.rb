@@ -18,7 +18,7 @@ class ArticlesController < ApplicationController
     #render plain: params[:article].inspect
    
     @article = Article.new(article_params)
-     @article.user_id=current_user
+    @article.user = current_user
     
     if @article.save
       flash[:success] = "article was sucessfully created"
