@@ -19,6 +19,7 @@
                     
                 </li>
                 
+                
               </div>
             </div>
           </ul>
@@ -30,6 +31,13 @@
   <h4 class="description"><strong>Description:</strong></h4>
 <hr>
 <%= simple_format(@article.description) %>
+
+<% if @article.categories.any? %>
+<p>
+  Category: <%= render @article.categories %>
+</p>
+<% end %>
+
   <div class="article-actions">
     
     <% if   logged_in? && (current_user == @article.user || current_user.admin?) %>
